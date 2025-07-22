@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     nav.classList.add('slide-in-animation');
                 }
                 else if (entry.boundingClientRect.top > 0){
+                    nav.style.position = "static";
+
                     nav.classList.remove('slide-in-animation');
                     nav.style.transform = "none";
                 }
