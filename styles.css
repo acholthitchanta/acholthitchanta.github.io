@@ -76,6 +76,8 @@
 @media(max-width: 500px){
     .sidebar{
         width: 100% !important;
+        background-color: white;
+        box-shadow: none;
     }
     .animate-on-scroll {
         transform: translateY(20px); /* Even smaller offset */
@@ -271,22 +273,41 @@ nav > ul {
     top: 0;
     right: 0;
     background-color:white;
-    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
-    z-index: 999;
+    z-index: 1000;
     width: 250px;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    backdrop-filter: blur(10px);
     padding: 2rem 0;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
 }
 
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998; /* Below sidebar (z-index: 999) but above other content */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.sidebar.open + .sidebar-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
 .sidebar.open{
     transform: translateX(0);
+}
+
+body.sidebar-open {
+    overflow: hidden; /* Disable scrolling when sidebar is open */
 }
 
 .sidebar li{
@@ -401,6 +422,7 @@ nav > ul {
 
 
 .intro{
+    z-index: -1;
     width: 100%;
     user-select: none;
     padding: 0 5vw;
