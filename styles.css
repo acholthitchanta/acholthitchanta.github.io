@@ -645,8 +645,9 @@ h2{
     transform: scale(1.3);
     transform-style: preserve-3d;
 }
+
+
 #contact{
-    background-color: white;
     padding: max(1rem, 5vw);
     gap: 10rem;
     width: 100%;
