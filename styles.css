@@ -1,13 +1,16 @@
 @media (max-width: 800px) {
+    .body:not(#code){
+        margin: auto;
+    }
 
-  .main {
-    flex-direction: column;
-    align-items: center;
-  }
-    
+
+
+    h2:not(.intro h2), p:not(.intro p):not(#contact p){
+    text-align: center;
+    }
+
   .menu-button{
-        display: flex !important;
-
+    display: flex !important;
     }
 
   .hideOnMobile{
@@ -15,9 +18,7 @@
   }
 
 
-  .skills-logos{
-    justify-content: flex-start !important;
-  }
+
 
   .skills-logos img{
     max-width: 100px;
@@ -33,20 +34,13 @@
     display: none;
   }
   #about-me {
-    align-items: center;
     max-width: 100vw !important;
     padding: 0.5rem !important;
     gap: 0rem !important;
     margin: auto;
     overflow-wrap: break-word;
   }
-  #about-me h2{
-    text-align: center;
-  }
 
-  .skills h2{
-    margin: auto !important;
-  }
 
 
   .posters img{
@@ -55,7 +49,7 @@
   }
 
   .animate-on-scroll {
-        transform: translateY(30px); /* Smaller offset for mobile */
+        transform: translateY(30px);
         transition: opacity 0.4s ease-out, transform 0.4s ease-out;
     }
     .animate-on-scroll.visible {
@@ -126,7 +120,7 @@
 }
 
 p{
-    font-size: max(1rem, 2vw);
+    font-size: max(1.1rem, 1.8vw);
 }
 
 h3{
@@ -279,6 +273,7 @@ nav > ul {
 }
 
 #open, #close{
+    height: 40px;
     filter: brightness(0%);
 }
 .sidebar{
@@ -293,7 +288,7 @@ nav > ul {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 2rem 0;
+    padding: 0.8rem 0;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
 }
@@ -425,6 +420,7 @@ body.sidebar-open {
     padding: 0;
     margin: 0;
     position: relative;
+    justify-content: center;
     margin: auto;
     gap: 5rem;
     display: flex;
@@ -470,7 +466,7 @@ body.sidebar-open {
 }
 
 .bio li, .bio li a{
-    font-size: max(1.1rem, 2vw);
+    font-size: max(1.1rem, 1.8vw);
 
 }
 
@@ -486,7 +482,7 @@ h2{
 }
 
 .intro h2, .intro h2 > span{
-    font-size: max(1.1rem, 4vw) !important;
+    font-size: max(1.3rem, 4vw) !important;
     font-family: "Lato", sans-serif;
     margin: auto;
     margin-top: max(1rem, 1vw);
@@ -576,6 +572,7 @@ h2{
     margin-top: -0.5rem;
     font-family: "IBM Plex Serif", serif;
 }
+
 .info p{
     margin-left: 3rem;
 }
@@ -583,11 +580,11 @@ h2{
 #skills{
     height: auto;
     margin: auto;
-    padding-left: 2rem;
     background-color: white;
 }
 
 .skills h2{
+    padding: 0 3rem;
     margin-top: -5rem;
     margin-bottom: 2rem;
     position: relative;
@@ -600,7 +597,7 @@ h2{
     display: flex;
     flex-wrap: wrap;
     padding: 2rem;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 .skills-logos .logo{
     height: max(5rem, 10vw);
@@ -651,6 +648,11 @@ h2{
     padding: max(1rem, 5vw);
     gap: 10rem;
     width: 100%;
+}
+
+#contact h2{
+    font-size: max(2rem, 3vw);
+
 }
 
 #name, #email{
