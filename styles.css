@@ -434,9 +434,13 @@ nav > ul {
     max-width: 900px;
 }
 
-.bio li{
+.bio li, .bio li a{
     font-size: max(1.1rem, 2vw);
 
+}
+
+.bio li a{
+    color: white;
 }
 
 
