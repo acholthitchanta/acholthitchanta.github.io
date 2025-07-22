@@ -65,11 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
 function showSideBar(){
     const sidebar = document.querySelector('.sidebar')
     sidebar.classList.add('open');
+    document.body.classList.add('sidebar-open');
 }
 
 function hideSideBar(){
     const sidebar= document.querySelector('.sidebar')
     sidebar.classList.remove('open')
+    document.body.classList.remove('sidebar-open');
 }
 
 
