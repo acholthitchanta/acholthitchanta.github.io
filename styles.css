@@ -1,9 +1,4 @@
 @media (max-width: 800px) {
-    .body:not(#code){
-        margin: auto;
-    }
-
-
 
     h2:not(.intro h2), p:not(.intro p):not(#contact p){
     text-align: center;
@@ -119,6 +114,10 @@
 
 }
 
+
+html:not(#code){
+    margin: auto;
+}
 p{
     font-size: max(1.1rem, 1.8vw);
 }
@@ -748,8 +747,8 @@ label{
     align-items: center;
     justify-content: center;
     margin: auto;
-    padding: 5rem;
     width: 100%;
+    padding-top: 5rem;
     gap: max(1rem, 2vw);
 }
 
@@ -761,6 +760,4 @@ label{
     filter: brightness(0%) saturate(0%);
 
 }
-
-
 
