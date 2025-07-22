@@ -96,6 +96,7 @@
         display: none;
     }
     nav{
+        height: 4rem !important;
         position: fixed;
         justify-content: flex-end !important;
     }
@@ -755,6 +756,3 @@ label{
     filter: brightness(0%) saturate(0%);
 
 }
-
-
-
