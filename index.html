@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Arissa Cholthitchanta</title>
+        <meta charset="UTF-8">
+        <meta name="Arissa Cholthitchanta"></meta>
+        <meta description="Arissa's (Faye) Portfolio Website">
+        <meta name="viewport"  content="width=device-width, initial-scale=1">
+        <link href="styles.css" rel="stylesheet">
+
+
+    </head>
+    
+
+    <body>
+        <div id="nav-sentinel" style="height: 1px;"></div>
+
+        <nav>
+            <a id="logo">AC</a>
+            <ul>
+                <li class="hideOnMobile"><a href="#about-me">About me</a></li>
+                <li class="hideOnMobile"><a href="#skills">Skills</a></li>
+                <li class="hideOnMobile"><a href="#gallery">Gallery</a></a></li>
+                <li class="hideOnMobile"><a href="#contact">Contact me</a></li>
+                <li class="menu-button" onclick=showSideBar()><img id="open" src="Icons8/open.svg" height="30"></li>
+
+            </ul>
+
+            <ul class="sidebar">
+                <li onclick="hideSideBar()"><img id="close" src="Icons8/close.svg"></li>
+                <li><a href="#about-me">About me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#gallery">Gallery</a></a></li>
+                <li><a href="#contact">Contact me</a></li>
+                <li></li>
+            </ul>
+        </nav>
+
+        <section class="intro container">
+            <h1>Hi, I'm Arissa </h1>
+            <div class="animated-text">
+            <h2>I'm a <span></span></h2>
+            </div>
+            <p>Welcome to my portfolio! I’m a high school senior  passionate about computer science. This website is a project that I have built from scratch. Enjoy your visit!</p>
+            <img id="code" src="images/code.svg">
+        </section>
+        
+        <div class="background" id="background1"></div>
+
+
+        <section id="about-me" class="dark">
+                <div class="image">
+                    <img id="main-pic" src="images/img3.png">
+                </div>
+
+                <div class="info white"> 
+                    <h2>About me</h2>
+                    <ul class="bio">
+                        <li>I’m Thai, Chinese and American</li>
+                        <li>Big fan of Linkin Park, Elliott Smith, and Michael Jackson</li>
+                        <li>Favorite foods include udon, ramen, steak (medium cooked), peking duck, and nutella</li>
+                        <li>I like to run, lift, solve rubik’s cubes, and make posters (click to see what I’ve made here!)</li>           
+                        <li>I am a member of the Fayetteville High School marching band, jazz band, concert band, robotics team, competitive programming club, and track/field team</li>
+                        <li>I’m currently learning web development, and enjoy solving coding problems</li>
+                    </ul>
+                    <div class="icons">
+                    </div>
+                
+                </div>
+        
+        </section>
+
+        
+        <div class="background" id="background2"></div>
+
+        <section id="skills">
+            
+            <div class="skills">
+                <h2>Skills</h2>
+                <div class="skills-logos">
+                    <img class="logo" src="images/python-logo.svg" alt="python logo">
+                    <img class="logo" src="images/java-icon.svg" alt="java logo">
+                    <img class="logo" src="images/javascript-logo-svgrepo-com.svg" alt="javascript logo">
+                    <img class="logo" src="images/html-1.svg" alt="html logo">
+                    <img class="logo" src="images/w3_css-icon~old.svg" alt="css logo">
+                    <img class="logo" src="images/Adobe_Photoshop_CC_icon.svg"alt="photoshop logo">
+                </div>
+            </div>
+        </section>
+
+        <div class="background" id="background3"></div>
+
+
+        <section id="gallery" class="dark">
+        <h2 class="white">Gallery</h2>
+        <p class="white">Some posters I've made! All created with Adobe Photoshop</p>
+
+        <div class="posters">
+            <img src="posters avg/berserk_compressed.svg" alt="berserk poster">
+            <img src="posters avg/evangelion2.svg" alt="evangelion poster">
+            <img src="posters avg/Igor tyler.svg" alt="tyler poster">
+            <img src="posters avg/john coltrane.svg" alt="john coltrane poster">
+            <img src="posters avg/kendrick lamar.svg" alt="kendrick lamar poster">
+            <img src="posters avg/microphones.svg" alt="microphones poster">
+            <img src="posters avg/monogatari.svg" alt="monogatari poster">
+            <img src="posters avg/the strokes.svg" alt="the strokes">
+            <img src="posters avg/vagabond_compressed.svg" alt="vagabond poster">
+            <img src="posters avg/Velvet underground_20241231150847_compressed.svg" alt="velvet underground poster">
+            <img src="posters avg/american football_compressed.svg" alt="american football poster">
+            <img src="posters avg/daft punk (1).svg" alt="daft punk poster">
+        </div>
+
+        </section>
+
+        <div class="background" id="background4"></div>
+
+        <section id="contact">
+
+            <div class="contact-info">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="2f85fd2f-fce8-4539-8123-2ce1469c6e1a">
+                    <div class="form-header">
+                        <h2>Contact me</h2>
+                        <p>Let's get in touch! If you have any questions or just want to say hi, feel free to reach out!</p>
+                    </div>
+                    <div class="name-email">
+                        <div class="form-section">
+                            <label id="name-label" for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-section">
+                            <label id="email-label" for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="message">
+                        <label id="message-label" for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
+
+                    <button type="submit">Send Message</button>
+                </form>
+
+            </div>
+
+    <div id="social-media">                
+        <a target="_blank" href="https://www.linkedin.com/in/arissa-cholthitchanta-971391363">
+            <img id="linkedin" src="SOCIAL MEDIA/Linkedin.svg" alt="LinkedIn Icon">
+        </a>
+        <a target="_blank" href="https://instagram.com/acholthitchanta">
+        <img id="insta" src="SOCIAL MEDIA/instagram.svg" alt="Instagram Icon">
+        </a>
+
+        <a target="_blank" href="https://www.acholthitchanta.github.io">
+            <img id="github" src="SOCIAL MEDIA/GitHub.svg" alt="GitHub Icon">
+        </a>
+
+        <a target="_blank" href="https://discord.bio/acholthitchanta">
+        <img id="discord" src="SOCIAL MEDIA/discord.svg" alt="Discord Icon">
+        </a>
+        <a target="_blank" href="https://leetcode.com/u/acholthitchanta">
+            <img id="leetcode" src="SOCIAL MEDIA/Leetcode.svg" alt="LeetCode Icon">
+        </a>
+    </div>
+        </section>
+        
+    <script src="script.js"></script>
+
+    </body>
+
+    <footer>
+    </footer>
+</html>
