@@ -59,6 +59,7 @@
 @media(max-width: 500px){
     .sidebar{
         width: 100% !important;
+        overflow: hidden;
         background-color: white;
         box-shadow: none;
     }
