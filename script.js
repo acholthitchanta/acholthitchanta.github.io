@@ -116,6 +116,12 @@ window.addEventListener('load', () => {
             if (intro) {
                 intro.classList.add('intro-slide-in');
             }
+
+            const animatedText = document.querySelector('.animated-text span');
+            if (animatedText) {
+                animatedText.classList.add('typing-start');
+            }
+            
         }, 500);
     }
 });

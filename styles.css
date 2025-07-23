@@ -374,13 +374,13 @@ body.sidebar-open {
     position: relative;
 }
 
-.animated-text span::before{
+.animated-text span.typing-start::before{
     content: "Software Developer";
     color: var(--main-color);
     animation: words 20s infinite;
 }
 
-.animated-text span::after{
+.animated-text span.typing-start::after{
     content: "";
     position: absolute;
     width: calc(100% + 8px);
