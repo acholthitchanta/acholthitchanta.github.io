@@ -111,6 +111,7 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             loadingScreen.style.display = 'none';
             contentContainer.style.display = 'block';
+            document.body.style.overflowX = 'hidden';
             document.body.style.overflowY = 'auto';
             const intro = document.querySelector('.intro');
             if (intro) {
