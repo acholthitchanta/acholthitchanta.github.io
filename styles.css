@@ -65,7 +65,7 @@
     .sidebar{
         width: 100%;
         background-color: white;
-        box-shadow: none;
+        box-shadow: 0 0 15px var(--main-color);
     }
 
     .name-email{
