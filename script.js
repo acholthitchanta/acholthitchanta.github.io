@@ -31,11 +31,64 @@ document.addEventListener('DOMContentLoaded', () => {
             const touch = e.touches[0];
             const deltaX = touch.clientX - window.lastTouchX;
             const deltaY = touch.clientY - window.lastTouchY;
-            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 5) {
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+                console.log('Blocked horizontal swipe:', deltaX, deltaY); // Debug
                 e.preventDefault();
             }
         }
     }, { passive: false });
+
+    // Nav slide-down animation setup
+    const nav = document.querySelector('nav');
+    const aboutMeSection = document.querySelector('#about-me');
+    if (nav && aboutMeSection) {
+        // Initialize nav as fixed
+        nav.style.position = 'fixed';
+        nav.style.top = '0';
+        nav.style.width = '100%';
+
+        // Fallback scroll listener
+        const checkNavAnimation = () => {
+            const aboutMeRect = aboutMeSection.getBoundingClientRect();
+            if (aboutMeRect.top <= window.innerHeight * 0.3 && aboutMeRect.bottom >= 0) {
+                nav.style.position = 'sticky';
+                nav.classList.remove('slide-in-animation');
+                void nav.offsetWidth; // Force reflow
+                nav.classList.add('slide-in-animation');
+            } else if (aboutMeRect.top > window.innerHeight * 0.3) {
+                nav.style.position = 'fixed';
+                nav.classList.remove('slide-in-animation');
+            }
+        };
+
+        // Initial check
+        checkNavAnimation();
+        window.addEventListener('scroll', checkNavAnimation);
+
+        // IntersectionObserver for nav animation
+        const aboutMeObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        nav.style.position = 'sticky';
+                        nav.classList.remove('slide-in-animation');
+                        void nav.offsetWidth; // Force reflow
+                        nav.classList.add('slide-in-animation');
+                        console.log('Nav animation triggered'); // Debug
+                    } else if (entry.boundingClientRect.top > window.innerHeight * 0.3) {
+                        nav.style.position = 'fixed';
+                        nav.classList.remove('slide-in-animation');
+                    }
+                });
+            },
+            {
+                root: null,
+                threshold: 0.1,
+                rootMargin: '0px'
+            }
+        );
+        aboutMeObserver.observe(aboutMeSection);
+    }
 });
 
 function showSideBar() {
@@ -113,51 +166,6 @@ window.addEventListener('load', () => {
             const animatedText = document.querySelector('.animated-text span');
             if (animatedText) {
                 animatedText.classList.add('typing-start');
-            }
-
-            // Trigger nav slide-down animation
-            const nav = document.querySelector('nav');
-            const aboutMeSection = document.querySelector('#about-me');
-            if (nav && aboutMeSection) {
-                // Initialize nav as fixed to allow transform
-                nav.style.position = 'fixed';
-                nav.style.top = '0';
-                nav.style.width = '100%';
-                // Check if about-me is in viewport
-                const aboutMeRect = aboutMeSection.getBoundingClientRect();
-                if (aboutMeRect.top <= window.innerHeight * 0.2 && aboutMeRect.bottom >= 0) {
-                    nav.style.position = 'sticky';
-                    nav.classList.remove('slide-in-animation'); // Reset
-                    void nav.offsetWidth; // Force reflow
-                    nav.classList.add('slide-in-animation'); // Trigger animation
-                } else {
-                    nav.style.position = 'fixed';
-                    nav.classList.remove('slide-in-animation');
-                }
-
-                // Set up nav observer
-                const aboutMeObserver = new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                nav.style.position = 'sticky';
-                                nav.style.top = '0';
-                                nav.classList.remove('slide-in-animation'); // Reset
-                                void nav.offsetWidth; // Force reflow to restart animation
-                                nav.classList.add('slide-in-animation');
-                            } else if (entry.boundingClientRect.top > window.innerHeight * 0.2) {
-                                nav.style.position = 'fixed';
-                                nav.classList.remove('slide-in-animation');
-                            }
-                        });
-                    },
-                    { 
-                        root: null, 
-                        threshold: 0.2, // Increased for better detection
-                        rootMargin: '-50px 0px 0px 0px' // Trigger earlier
-                    }
-                );
-                aboutMeObserver.observe(aboutMeSection);
             }
 
             // Trigger scroll animations for visible elements
