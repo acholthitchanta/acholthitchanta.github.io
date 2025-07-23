@@ -127,7 +127,7 @@ body {
     margin: 0;
     overflow-x: hidden; /* Prevent horizontal scrolling */
     overscroll-behavior-x: none; /* Prevent swipe navigation */
-    touch-action: pan-y; /* Allow vertical scrolling, block horizontal */
+    touch-action: pan-y pinch-zoom; /* Allow vertical scrolling and pinch-zoom */
 }
 
 body.no-swipe {
@@ -136,7 +136,7 @@ body.no-swipe {
 
 body.sidebar-open {
     overflow: hidden; /* Prevent all scrolling when sidebar is open */
-    touch-action: none; /* Block all touch gestures when sidebar is open */
+    touch-action: none; /* Block touch gestures when sidebar is open */
 }
 
 p {
@@ -773,5 +773,4 @@ label {
         justify-content: flex-end !important;
     }
 }
-
 
