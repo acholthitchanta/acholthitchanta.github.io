@@ -4,15 +4,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contentContainer) {
         contentContainer.style.display = 'none';
     }
-    document.body.style.overflow = 'hidden'; // Disable all scrolling/swiping
-    document.body.style.overflowX = 'hidden'; // Explicitly disable horizontal
-    document.body.style.overflowY = 'hidden'; // Explicitly disable vertical
-    document.body.classList.add('no-touch'); // Add class to block touch events
-    // Hide sidebar to prevent swipe access
+    document.body.style.overflow = 'hidden';
+    document.body.style.overflowX = 'hidden';
+    document.body.style.overflowY = 'hidden';
+    document.body.classList.add('no-swipe'); // Add class to block all swipe gestures
+    // Hide sidebar and overlay completely to prevent swipe access
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
-        sidebar.style.visibility = 'hidden';
+        sidebar.style.display = 'none';
     }
+    const sidebarOverlay = document.querySelector('.sidebar-overlay');
+    if (sidebarOverlay) {
+        sidebarOverlay.style.display = 'none';
+    }
+
+    // Block all horizontal touchmove events
+    document.addEventListener('touchmove', (e) => {
+        if (!document.querySelector('.sidebar.open')) {
+            // Prevent horizontal swiping unless sidebar is explicitly open
+            e.preventDefault();
+        }
+    }, { passive: false });
 });
 
 function showSideBar() {
@@ -67,10 +79,16 @@ window.addEventListener('load', () => {
             contentContainer.style.display = 'block';
             document.body.style.overflowY = 'auto'; // Restore vertical scrolling
             document.body.style.overflowX = 'hidden'; // Keep horizontal scrolling disabled
-            document.body.classList.remove('no-touch'); // Restore touch events
+            document.body.classList.remove('no-swipe'); // Allow vertical touch gestures
+            document.documentElement.classList.add('loaded'); // Enable html overflow
+            // Restore sidebar and overlay
             const sidebar = document.querySelector('.sidebar');
             if (sidebar) {
-                sidebar.style.visibility = 'visible';
+                sidebar.style.display = 'flex';
+            }
+            const sidebarOverlay = document.querySelector('.sidebar-overlay');
+            if (sidebarOverlay) {
+                sidebarOverlay.style.display = 'block';
             }
 
             // Trigger intro animation
@@ -89,7 +107,6 @@ window.addEventListener('load', () => {
             const nav = document.querySelector('nav');
             const aboutMeSection = document.querySelector('#about-me');
             if (nav && aboutMeSection) {
-                // Check if about-me is in viewport to decide initial nav state
                 const aboutMeRect = aboutMeSection.getBoundingClientRect();
                 if (aboutMeRect.top <= window.innerHeight * 0.1 && aboutMeRect.bottom >= 0) {
                     nav.style.position = 'sticky';
@@ -101,7 +118,6 @@ window.addEventListener('load', () => {
                     nav.style.transform = 'none';
                 }
 
-                // Set up nav observer for subsequent scroll events
                 const aboutMeObserver = new IntersectionObserver(
                     (entries) => {
                         entries.forEach((entry) => {
@@ -148,7 +164,6 @@ window.addEventListener('load', () => {
 
             elementsToAnimate.forEach((element) => {
                 element.classList.add('animate-on-scroll');
-                // Trigger animation immediately if element is in viewport
                 const rect = element.getBoundingClientRect();
                 if (rect.top < window.innerHeight && rect.bottom >= 0) {
                     element.classList.add('visible');
