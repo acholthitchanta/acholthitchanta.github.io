@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contentContainer) {
         contentContainer.style.display = 'none';
     }
+    
+    document.body.style.overflow = 'hidden';
 
     const nav = document.querySelector('nav');
     const aboutMeSection = document.querySelector('#about-me');
