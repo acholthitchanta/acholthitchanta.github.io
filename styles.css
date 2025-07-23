@@ -72,7 +72,7 @@
     }
     nav{
         height: 4rem !important;
-        position: fixed;
+        position: sticky;
         justify-content: flex-end !important;
     }
 }
