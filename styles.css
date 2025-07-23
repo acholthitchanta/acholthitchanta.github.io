@@ -138,7 +138,9 @@
 
 }
 
-
+html{
+  overflowX: hidden;
+}
 html:not(#code){
     margin: auto;
 }
