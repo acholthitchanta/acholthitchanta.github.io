@@ -87,6 +87,16 @@
     5%,20%,25%,40%,45%,60%,65%,80%,85% { width: calc(100% + 8px); }
 }
 
+/* Nav slide-in animation */
+.slide-in-animation {
+    animation: slide-in 1s ease forwards;
+}
+
+@keyframes slide-in {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
 /* Existing styles */
 .scroll-watcher {
     height: 5px;
@@ -207,15 +217,6 @@ h3 {
     font-weight: bold;
 }
 
-.slide-in-animation {
-    animation: slide-in 1s ease;
-}
-
-@keyframes slide-in {
-    from { transform: translateY(-200px); }
-    to { transform: translateY(0); }
-}
-
 nav {
     height: 5rem;
     display: flex;
@@ -230,6 +231,7 @@ nav {
     backdrop-filter: blur(10px);
     padding: 0 2rem;
     z-index: 3;
+    transition: transform 0.3s ease; /* Smooth transform changes */
 }
 
 nav li:nth-last-child(2) a {
@@ -290,7 +292,7 @@ nav > ul {
     right: 0;
     background-color: white;
     z-index: 1000;
-    width: 250px;
+    width: 250px; /* Fixed width for all screens */
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -314,6 +316,7 @@ nav > ul {
     width: 100%;
     height: 100%;
     z-index: 998;
+    background-color: rgba(0, 0, 0, 0.5); /* Dim background */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -326,13 +329,13 @@ nav > ul {
 
 .sidebar li {
     width: 100%;
-    padding: 0.5rem 1rem; /* Adjusted for narrower sidebar */
+    padding: 0.5rem 1rem;
     text-align: center;
 }
 
 .sidebar a {
     width: 100%;
-    font-size: 1.2rem; /* Smaller font for mobile */
+    font-size: 1.2rem;
     display: block;
 }
 
@@ -753,7 +756,7 @@ label {
 
 @media (max-width: 500px) {
     .sidebar {
-        width: 100%;
+        width: 250px; /* Narrower sidebar for mobile */
         background-color: white;
         box-shadow: none;
     }
@@ -768,8 +771,8 @@ label {
 
     nav {
         height: 4rem !important;
-        position: sticky;
+        position: sticky; /* Ensure sticky behavior on mobile */
         justify-content: flex-end !important;
+        z-index: 3;
     }
 }
-
