@@ -1,33 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Existing nav slide-down observer
-    const nav = document.querySelector('nav');
-    const aboutMeSection = document.querySelector('#about-me');
-
-    const intro = document.querySelector('.intro');
-    if (intro) {
-        intro.classList.add('intro-slide-in');
-    }
-
-
-    const aboutMeObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    nav.style.position = "sticky";
-                    nav.style.transform = "";
-                    nav.classList.add('slide-in-animation');
-                }
-                else if (entry.boundingClientRect.top > 0){
-                    nav.style.position = "static";
-
-                    nav.classList.remove('slide-in-animation');
-                    nav.style.transform = "none";
-                }
-            });
-        },
-        { root: null, threshold: 0.1 }
-    );
 
     aboutMeObserver.observe(aboutMeSection);
 
@@ -131,7 +103,15 @@ window.addEventListener('load', () => {
     const loadingScreen = document.querySelector('#loading-screen');
     const contentContainer = document.querySelector('body > :not(#loading-screen)');
     if (loadingScreen && contentContainer) {
-        loadingScreen.style.display = 'none';
-        contentContainer.style.display = 'block';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+            contentContainer.style.display = 'block';
+
+            const intro = document.querySelector('.intro');
+
+            if (intro){
+                intro.classList.add('intro-slide-in');
+            }
+        }, 500);
     }
 }); 
