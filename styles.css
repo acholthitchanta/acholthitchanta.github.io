@@ -275,6 +275,7 @@ nav > ul {
 }
 
 .sidebar {
+    overflow: hidden;
     position: fixed;
     top: 0;
     right: 0;
