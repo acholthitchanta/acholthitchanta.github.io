@@ -48,7 +48,7 @@
     transform: translateY(0);
 }
 
-/* Typing animation (only starts with .typing-start) */
+/* Typing animation */
 .animated-text span {
     position: relative;
 }
@@ -138,10 +138,11 @@ body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
     overscroll-behavior-x: none; /* Prevent swipe navigation */
     touch-action: pan-y pinch-zoom; /* Allow vertical scrolling and pinch-zoom */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 body.no-swipe {
-    touch-action: none; /* Block all touch gestures during loading */
+    touch-action: none; /* Block all touch during loading */
 }
 
 body.sidebar-open {
@@ -231,7 +232,7 @@ nav {
     backdrop-filter: blur(10px);
     padding: 0 2rem;
     z-index: 3;
-    transition: transform 0.3s ease; /* Smooth transform changes */
+    transition: transform 0.3s ease;
 }
 
 nav li:nth-last-child(2) a {
@@ -292,7 +293,7 @@ nav > ul {
     right: 0;
     background-color: white;
     z-index: 1000;
-    width: 250px; /* Fixed width for all screens */
+    width: 250px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -301,12 +302,12 @@ nav > ul {
     padding: 0.8rem 0;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
-    pointer-events: none; /* Prevent interaction when closed */
+    pointer-events: none;
 }
 
 .sidebar.open {
     transform: translateX(0);
-    pointer-events: auto; /* Allow interaction when open */
+    pointer-events: auto;
 }
 
 .sidebar-overlay {
@@ -316,7 +317,6 @@ nav > ul {
     width: 100%;
     height: 100%;
     z-index: 998;
-    background-color: rgba(0, 0, 0, 0.5); /* Dim background */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -379,10 +379,10 @@ nav > ul {
 }
 
 .intro {
-    z-index: -1;
+    z-index: 0; /* Above background, below nav */
     width: 100%;
     user-select: none;
-    padding: 0 5vw;
+    padding: 5rem 5vw 0; /* Add top padding for nav */
     position: relative;
 }
 
@@ -756,7 +756,7 @@ label {
 
 @media (max-width: 500px) {
     .sidebar {
-        width: 250px; /* Narrower sidebar for mobile */
+        width: 100%;
         background-color: white;
         box-shadow: none;
     }
@@ -771,8 +771,12 @@ label {
 
     nav {
         height: 4rem !important;
-        position: sticky; /* Ensure sticky behavior on mobile */
+        position: sticky;
         justify-content: flex-end !important;
         z-index: 3;
+    }
+
+    .intro {
+        padding: 4rem 5vw 0; /* Adjust padding for smaller nav height */
     }
 }
