@@ -58,9 +58,12 @@
 }
 
 @media(max-width: 500px){
+  
+  body{
+    overflow-x: hidden;
+  }
     .sidebar{
-        max-width: 500px;
-        overflow: hidden;
+        width: 100%;
         background-color: white;
         box-shadow: none;
     }
@@ -140,9 +143,6 @@
 
 }
 
-html{
-  overflowX: hidden;
-}
 html:not(#code){
     margin: auto;
 }
@@ -523,7 +523,7 @@ h2{
  
 
 body{
-    max-width: 100%;
+    width: 100%;
     margin: auto;
     overflow-x: hidden;
 }
