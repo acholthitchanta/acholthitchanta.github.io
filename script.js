@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contentContainer) {
         contentContainer.style.display = 'none';
     }
-    
+
     document.body.style.overflow = 'hidden';
 
     const nav = document.querySelector('nav');
@@ -111,6 +111,7 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             loadingScreen.style.display = 'none';
             contentContainer.style.display = 'block';
+            document.body.style.overflow = 'auto';
             const intro = document.querySelector('.intro');
             if (intro) {
                 intro.classList.add('intro-slide-in');
