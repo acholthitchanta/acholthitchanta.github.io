@@ -27,7 +27,7 @@
     display: none;
   }
   #about-me {
-    max-width: 100vw !important;
+    max-width: 100% !important;
     padding: 0.5rem !important;
     gap: 0rem !important;
     margin: auto;
@@ -152,6 +152,10 @@ p{
 
 h3{
     font-size: 1.5rem;
+}
+
+section{
+  width: 100%;
 }
 
 #background1{
@@ -647,6 +651,7 @@ h2{
 
 #gallery{
     text-align: right;
+    overflow-x: hidden;
 }
 
 .posters{
@@ -654,10 +659,6 @@ h2{
     display: flex;
     flex-direction: column;
     gap: 2rem;
-}
-
-#row1, #row2{
-    overflow-x: hidden;
 }
 
 #row1{
