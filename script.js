@@ -111,7 +111,7 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             loadingScreen.style.display = 'none';
             contentContainer.style.display = 'block';
-            document.body.style.overflow = 'auto';
+            document.body.style.overflowY = 'auto';
             const intro = document.querySelector('.intro');
             if (intro) {
                 intro.classList.add('intro-slide-in');
