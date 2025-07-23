@@ -77,6 +77,7 @@ document.addEventListener('scroll', () => {
     const row1 = document.querySelector('#row1');
     const row2 = document.querySelector('#row2');
     const skills = document.querySelector('#skills');
+    const skillsRect = skills.getBoundingClientRect();
     const contact = document.querySelector('#contact');
     const contactRect = contact.getBoundingClientRect();
     const gallery = document.querySelector('#gallery');
@@ -85,7 +86,7 @@ document.addEventListener('scroll', () => {
     const row2Rect = row2.getBoundingClientRect();
     const maxTranslate = 0.7 * row1Rect.width;
 
-    if (galleryRect.top < window.innerHeight && galleryRect.bottom > 0) {
+    if (skillsRect.bottom > window.innerHeight && galleryRect.bottom > 0) {
         const scrollY = window.scrollY;
         const skillsTop = skills.offsetTop;
         const contactBottom = contact.offsetTop + contactRect.height;
