@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
     document.body.style.overflowX = 'hidden';
     document.body.style.overflowY = 'hidden';
-    document.body.classList.add('no-swipe'); // Add class to block all swipe gestures
-    // Hide sidebar and overlay completely to prevent swipe access
+    document.body.classList.add('no-swipe'); // Block all touch during loading
+    // Hide sidebar and overlay to prevent swipe access
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
         sidebar.style.display = 'none';
@@ -18,11 +18,23 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebarOverlay.style.display = 'none';
     }
 
-    // Block all horizontal touchmove events
+    // Track touch start position for swipe direction detection
+    document.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        window.lastTouchX = touch.clientX;
+        window.lastTouchY = touch.clientY;
+    });
+
+    // Block horizontal swipes only
     document.addEventListener('touchmove', (e) => {
         if (!document.querySelector('.sidebar.open')) {
-            // Prevent horizontal swiping unless sidebar is explicitly open
-            e.preventDefault();
+            const touch = e.touches[0];
+            const deltaX = touch.clientX - window.lastTouchX;
+            const deltaY = touch.clientY - window.lastTouchY;
+            // Block if horizontal movement is dominant
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 5) {
+                e.preventDefault();
+            }
         }
     }, { passive: false });
 });
@@ -89,6 +101,8 @@ window.addEventListener('load', () => {
             const sidebarOverlay = document.querySelector('.sidebar-overlay');
             if (sidebarOverlay) {
                 sidebarOverlay.style.display = 'block';
+                // Add click-to-close for overlay
+                sidebarOverlay.addEventListener('click', hideSideBar);
             }
 
             // Trigger intro animation
