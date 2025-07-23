@@ -117,3 +117,21 @@ document.addEventListener('scroll', () => {
     }
 });
 
+
+
+window.addEventListener('DOMContentLoaded', function() {
+    const contentContainer = document.querySelector('body > :not(#loading)');
+    if (contentContainer) {
+        contentContainer.style.display = 'none';
+    }
+
+})
+
+window.addEventListener('load', () => {
+    const loadingScreen = document.querySelector('#loading');
+    const contentContainer = document.querySelector('body > :not(#loading)');
+    if (loadingScreen && contentContainer) {
+        loadingScreen.style.display = 'none';
+        contentContainer.style.display = 'block';
+    }
+});
