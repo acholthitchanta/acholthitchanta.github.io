@@ -140,9 +140,7 @@
 
 }
 
-html{
-  overflowX: hidden !important;
-}
+
 html:not(#code){
     margin: auto;
 }
@@ -524,7 +522,7 @@ h2{
 body{
     max-width: 100%;
     margin: auto;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
 content{
