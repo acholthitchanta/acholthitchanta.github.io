@@ -86,7 +86,7 @@ document.addEventListener('scroll', () => {
     const row2Rect = row2.getBoundingClientRect();
     const maxTranslate = 0.7 * row1Rect.width;
 
-    if (galleryRect.top > window.innerHeight && galleryRect.bottom > 0) {
+    if (galleryRect.top < window.innerHeight && galleryRect.bottom > 0) {
         const scrollY = window.scrollY;
         const skillsTop = skills.offsetTop;
         const contactBottom = contact.offsetTop + contactRect.height;
