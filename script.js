@@ -120,7 +120,7 @@ document.addEventListener('scroll', () => {
 
 
 window.addEventListener('DOMContentLoaded', function() {
-    const contentContainer = document.querySelector('body > :not(#loading)');
+    const contentContainer = document.querySelector('body > :not(#loading-screen)');
     if (contentContainer) {
         contentContainer.style.display = 'none';
     }
@@ -128,10 +128,10 @@ window.addEventListener('DOMContentLoaded', function() {
 })
 
 window.addEventListener('load', () => {
-    const loadingScreen = document.querySelector('#loading');
-    const contentContainer = document.querySelector('body > :not(#loading)');
+    const loadingScreen = document.querySelector('#loading-screen');
+    const contentContainer = document.querySelector('body > :not(#loading-screen)');
     if (loadingScreen && contentContainer) {
         loadingScreen.style.display = 'none';
         contentContainer.style.display = 'block';
     }
-});
+}); 
