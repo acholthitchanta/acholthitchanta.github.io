@@ -1,4 +1,3 @@
-/* styles.css */
 /* Loading screen styles */
 #loading-screen {
     position: fixed;
@@ -115,18 +114,29 @@
     box-sizing: border-box;
 }
 
-html:not(#code) {
-    margin: auto;
+html {
+    overflow: hidden; /* Block all scrolling during loading */
+    overscroll-behavior-x: none; /* Prevent browser navigation gestures */
+}
+
+html.loaded {
+    overflow: auto; /* Restore scrolling after loading */
 }
 
 body {
     margin: 0;
-    overflow-x: hidden;
-    overscroll-behavior-x: none; /* Prevent swipe navigation on mobile */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overscroll-behavior-x: none; /* Prevent swipe navigation */
+    touch-action: pan-y; /* Allow vertical scrolling, block horizontal */
 }
 
-body.no-touch {
+body.no-swipe {
     touch-action: none; /* Block all touch gestures during loading */
+}
+
+body.sidebar-open {
+    overflow: hidden; /* Prevent all scrolling when sidebar is open */
+    touch-action: none; /* Block all touch gestures when sidebar is open */
 }
 
 p {
@@ -275,13 +285,12 @@ nav > ul {
 }
 
 .sidebar {
-    overflow: hidden;
     position: fixed;
     top: 0;
     right: 0;
     background-color: white;
     z-index: 1000;
-    width: 250px;
+    width: 250px; /* Fixed width for all screens */
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -290,6 +299,12 @@ nav > ul {
     padding: 0.8rem 0;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
+    pointer-events: none; /* Prevent interaction when closed */
+}
+
+.sidebar.open {
+    transform: translateX(0);
+    pointer-events: auto; /* Allow interaction when open */
 }
 
 .sidebar-overlay {
@@ -299,6 +314,7 @@ nav > ul {
     width: 100%;
     height: 100%;
     z-index: 998;
+    background-color: rgba(0, 0, 0, 0.5); /* Dim background */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -309,21 +325,16 @@ nav > ul {
     visibility: visible;
 }
 
-.sidebar.open {
-    transform: translateX(0);
-}
-
-body.sidebar-open {
-    overflow: hidden;
-}
-
 .sidebar li {
     width: 100%;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1rem; /* Adjusted for narrower sidebar */
+    text-align: center;
 }
 
 .sidebar a {
     width: 100%;
+    font-size: 1.2rem; /* Smaller font for mobile */
+    display: block;
 }
 
 #code {
@@ -743,7 +754,7 @@ label {
 
 @media (max-width: 500px) {
     .sidebar {
-        width: 100% !important;
+        width: 250px; /* Narrower sidebar for mobile */
         background-color: white;
         box-shadow: none;
     }
@@ -762,6 +773,5 @@ label {
         justify-content: flex-end !important;
     }
 }
-
 
 
