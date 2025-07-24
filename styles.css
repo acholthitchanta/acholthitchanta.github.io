@@ -225,6 +225,7 @@ section{
     animation: slide-in 1s ease;
 }
 
+
 @keyframes slide-in{
     from{
         transform: translateY(-200px);
@@ -233,6 +234,67 @@ section{
     to{
         transform: translateY(0);
     }
+}
+
+@keyframes shift-right{
+    from{
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+}
+
+@keyframes shift-left{
+    from{
+        opacity: 0;
+        transform: translateX(200px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes shift-up{
+    from{
+        opacity: 0;
+        transform: translateY(30%);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes shift-down{
+    from{
+        opacity: 0;
+        transform: translateY(-30%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.shift-down{
+    animation: shift-down 1s ease;
+}
+.shift-up{
+    animation: shift-up 1s ease;
+}
+
+.shift-right{
+    animation: shift-right 1s ease;
+}
+
+.shift-left{
+    animation: shift-left 1s ease;
 }
 
 nav{
@@ -449,7 +511,7 @@ body.sidebar-open {
 
 
 #about-me{
-    padding: 0;
+    padding: 5%;
     margin: 0;
     position: relative;
     justify-content: center;
@@ -459,6 +521,7 @@ body.sidebar-open {
     z-index: 2;
     background-color: var(--main-color);
 }
+
 
 
 

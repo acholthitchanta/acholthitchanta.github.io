@@ -6,59 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.body.style.overflow = 'hidden';
 
-    const nav = document.querySelector('nav');
-    const aboutMeSection = document.querySelector('#about-me');
 
-    const aboutMeObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    nav.style.position = "sticky";
-                    nav.style.top = "0";
-                    nav.style.transform = "";
-                    nav.classList.add('slide-in-animation');
-                } else if (entry.boundingClientRect.top > 0) {
-                    nav.style.position = "static";
-                    nav.classList.remove('slide-in-animation');
-                    nav.style.transform = "none";
-                }
-            });
-        },
-        { 
-            root: null, 
-            threshold: 0.1,
-            rootMargin: '0px'
-        }
-    );
 
-    if (aboutMeSection) {
-        aboutMeObserver.observe(aboutMeSection);
-    }
-
-    const elementsToAnimate = document.querySelectorAll(
-        '#about-me > *, #skills > *, #gallery > *, #contact'
-    );
-
-    const scrollObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    scrollObserver.unobserve(entry.target);
-                }
-            });
-        },
-        {
-            root: null,
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        }
-    );
-
-    elementsToAnimate.forEach((element) => {
-        element.classList.add('animate-on-scroll');
-        scrollObserver.observe(element);
-    });
 });
 
 function showSideBar() {
@@ -124,4 +73,67 @@ window.addEventListener('load', () => {
             }
         }, 500);
     }
+
+
 });
+
+const scrollElements = document.querySelectorAll(
+    ' #about-me > *, #main-pic, #skills > *, #gallery h2, #contact > *:not(#social-media), #social-media'
+);
+
+const elementInView= (el, scrollOffset = 20) =>{
+    const elementTop = el.getBoundingClientRect().top;
+
+    return(
+        elementTop <= ((window.innerHeight || document.documentElement.clientHeight) - scrollOffset)
+    );
+};
+
+const displayScrollElement = (element, animation) => {
+    element.classList.add(animation);
+};
+
+const handleScrollAnimation = () => {
+    scrollElements.forEach((el) => {
+        if (elementInView(el,20))
+            if (el.matches('#about-me > *') || el.matches('#gallery') || el.matches('#social-media')) displayScrollElement(el, "shift-right");
+            else if (el.matches('#skills > *')) displayScrollElement(el, "shift-left");
+            else if (el.matches('#contact > *')) displayScrollElement(el, "shift-up");
+
+
+    })
+}
+
+window.addEventListener('scroll', () => {
+    handleScrollAnimation();
+})
+
+
+const nav = document.querySelector('nav');
+const aboutMeSection = document.querySelector('#about-me');
+
+const aboutMeObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                nav.style.top = "0";
+                nav.style.transform = "";
+                nav.classList.add('slide-in-animation');
+                nav.style.position = "sticky";
+            } else if (entry.boundingClientRect.top > 0) {
+                nav.style.position = "static";
+                nav.classList.remove('slide-in-animation');
+                nav.style.transform = "none";
+            }
+        });
+    },
+    { 
+        root: null, 
+        threshold: 0.1,
+        rootMargin: '0px'
+    }
+);
+
+if (aboutMeSection) {
+    aboutMeObserver.observe(aboutMeSection);
+}
