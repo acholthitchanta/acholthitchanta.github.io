@@ -9,6 +9,11 @@
     display: flex !important;
     }
 
+    .sidebar{
+        box-shadow: 0 0 15px black;
+
+    }
+
   .hideOnMobile{
     display: none;
   }
@@ -65,7 +70,7 @@
     .sidebar{
         width: 100%;
         background-color: white;
-        box-shadow: 0 0 15px var(--main-color);
+
     }
 
     .name-email{
@@ -390,6 +395,7 @@ nav > ul {
     padding: 0.8rem 0;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
+
 }
 
 .sidebar-overlay {
