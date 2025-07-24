@@ -9,10 +9,6 @@
     display: flex !important;
     }
 
-    .sidebar{
-        box-shadow: 0 0 15px black;
-
-    }
 
   .hideOnMobile{
     display: none;
@@ -417,10 +413,12 @@ nav > ul {
 
 .sidebar.open{
     transform: translateX(0);
+    box-shadow: 0 0 15px black;
+
 }
 
 body.sidebar-open {
-    overflow: hidden; /* Disable scrolling when sidebar is open */
+    overflow: hidden;
 }
 
 .sidebar li{
