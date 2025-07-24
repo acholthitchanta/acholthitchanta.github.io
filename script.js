@@ -5,9 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.body.style.overflow = 'hidden';
-
-
-
 });
 
 function showSideBar() {

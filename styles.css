@@ -146,6 +146,11 @@
 html:not(#code){
     margin: auto;
 }
+
+html{
+    scroll-behavior: smooth;
+}
+
 p{
     font-size: max(1.1rem, 1.8vw);
 }
