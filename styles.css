@@ -164,7 +164,7 @@ section{
   width: 100%;
 }
 
-section > *{
+#about-me > *, #skills > *, #contact > *{
   opacity: 0;
 }
 
