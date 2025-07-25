@@ -164,6 +164,10 @@ section{
   width: 100%;
 }
 
+section > *{
+  opacity: 0;
+}
+
 #background1{
     width: 100%;
     height: 500px;
