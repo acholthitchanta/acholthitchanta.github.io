@@ -92,10 +92,12 @@ const displayScrollElement = (element, animation) => {
 
 const handleScrollAnimation = () => {
     scrollElements.forEach((el) => {
-        if (elementInView(el,20))
+        if (elementInView(el,20)){
             if (el.matches('#about-me > *') || el.matches('#gallery') || el.matches('#social-media')) displayScrollElement(el, "shift-right");
             else if (el.matches('#skills > *')) displayScrollElement(el, "shift-left");
             else if (el.matches('#contact > *')) displayScrollElement(el, "shift-up");
+            el.style.opacity = '1';
+        }
 
 
     })
