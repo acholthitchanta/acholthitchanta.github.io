@@ -448,7 +448,7 @@ body.sidebar-open {
     font-weight: bold;
     font-size: 1.2rem;
     padding: 0.2rem;
-    border: solid black;
+    border: solid 2px black;
     border-radius: 5px;
 }
 
@@ -708,8 +708,8 @@ h2{
     justify-content: center;
 }
 .skills-logos .logo{
-    height: max(5rem, 10vw);
-    width: max(5rem, 10vw);
+    height: max(5rem, 8.5vw);
+    width: max(5rem, 8.5vw);
     object-fit: contain;
     flex: 0 0 auto;
     display: block;
