@@ -23,17 +23,15 @@ document.addEventListener('scroll', () => {
     const row1 = document.querySelector('#row1');
     const row2 = document.querySelector('#row2');
     const skills = document.querySelector('#skills');
-    const skillsRect = skills.getBoundingClientRect();
     const contact = document.querySelector('#contact');
     const contactRect = contact.getBoundingClientRect();
     const gallery = document.querySelector('#gallery');
     const galleryRect = gallery.getBoundingClientRect();
     const row1Rect = row1.getBoundingClientRect();
-    const row2Rect = row2.getBoundingClientRect();
-    const maxTranslate = 0.7 * row1Rect.width;
+    const maxTranslate = 0.5*row1Rect.width;
 
     if (galleryRect.top < window.innerHeight && galleryRect.bottom > 0) {
-        const scrollY = window.scrollY;
+       const scrollY = window.scrollY;
         const skillsTop = skills.offsetTop;
         const contactBottom = contact.offsetTop + contactRect.height;
         const scrollRange = contactBottom - skillsTop;
@@ -41,12 +39,11 @@ document.addEventListener('scroll', () => {
 
         const translateX1 = maxTranslate * scrollProgress;
         row1.style.transform = `translateX(-${translateX1}px)`;
-
-        const translateX2 = maxTranslate * scrollProgress;
-        row2.style.transform = `translateX(calc(-100% + 100vw + ${translateX2}px))`;
+        row2.style.transform = `translateX(calc(-100% + 100vw + ${translateX1}px))`;
     } else {
         row1.style.transform = 'translateX(0)';
         row2.style.transform = 'translateX(calc(-100% + 100vw))';
+
     }
 });
 
@@ -93,13 +90,11 @@ const displayScrollElement = (element, animation) => {
 const handleScrollAnimation = () => {
     scrollElements.forEach((el) => {
         if (elementInView(el,20)){
-            if (el.matches('#about-me > *') || el.matches('#gallery') || el.matches('#social-media')) displayScrollElement(el, "shift-right");
+            if (el.matches('#about-me > *') || el.matches('#gallery') ) displayScrollElement(el, "shift-right");
             else if (el.matches('#skills > *')) displayScrollElement(el, "shift-left");
             else if (el.matches('#contact > *')) displayScrollElement(el, "shift-up");
             el.style.opacity = '1';
         }
-
-
     })
 }
 
