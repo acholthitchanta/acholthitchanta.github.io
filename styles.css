@@ -164,7 +164,7 @@ section{
   width: 100%;
 }
 
-#about-me > *, #skills > *, #contact > *{
+.intro, #about-me > *, #skills > *, #contact > *{
   opacity: 0;
 }
 
@@ -691,6 +691,7 @@ h2{
     background-color: white;
 }
 
+
 .skills h2{
     padding: 0 3rem;
     margin-top: -5rem;
@@ -713,6 +714,7 @@ h2{
     object-fit: contain;
     flex: 0 0 auto;
     display: block;
+    opacity: 0;
 }
 
 
@@ -870,10 +872,12 @@ label{
     width: 100%;
     padding-top: 5rem;
     gap: max(1rem, 2vw);
+
 }
 
 #social-media img{
     height: max(25px, 3vw);
+
 }
 
 #github, #discord{

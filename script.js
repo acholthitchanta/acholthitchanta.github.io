@@ -72,7 +72,7 @@ window.addEventListener('load', () => {
 });
 
 const scrollElements = document.querySelectorAll(
-    ' #about-me > *, #main-pic, #skills > *, #gallery h2, #contact > *:not(#social-media), #social-media'
+    ' #about-me > *, #main-pic, #skills h2, #skills > *, #gallery h2, #contact > *:not(#social-media), #social-media'
 );
 
 const elementInView= (el, scrollOffset = 20) =>{
@@ -91,8 +91,20 @@ const handleScrollAnimation = () => {
     scrollElements.forEach((el) => {
         if (elementInView(el,20)){
             if (el.matches('#about-me > *') || el.matches('#gallery') ) displayScrollElement(el, "shift-right");
-            else if (el.matches('#skills > *')) displayScrollElement(el, "shift-left");
+            else if (el.matches('#skills h2')) displayScrollElement(el, "shift-down");
+            else if (el.matches('#skills > *')) {
+
+                // Animate each logo one by one
+                const logoSlider = document.querySelectorAll('.logo');
+                logoSlider.forEach((logo, i) => {
+                    setTimeout(() => {
+                        displayScrollElement(logo, "shift-up");
+                        logo.style.opacity = '1';
+                    }, i * 150); // 300ms delay between each
+                });
+            }
             else if (el.matches('#contact > *')) displayScrollElement(el, "shift-up");
+            else if (el.matches('#social-media')) displayScrollElement(logo, "shift-up");
             el.style.opacity = '1';
         }
     })
