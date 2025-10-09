@@ -136,7 +136,7 @@
 
 *{
     font-size: 18px;
-    font-family: "Trebuchet MS", sans-serif;
+    font-family: "Poppins", sans-serif;
     --main-color: #5f737c;
     --main-lighter: #d3dcdf;
     --main-darker: #2b4357;
@@ -229,6 +229,12 @@ section{
     src: url(fonts/Lato-Black.woff);
     font-weight: bold;
 }
+
+@font-face{
+    font-family: "Poppins";
+    src: url(fonts/Poppins-Regular.woff);
+}
+
 
 
 .slide-in-animation{
@@ -359,6 +365,7 @@ nav li:not(:nth-last-child(2)) a{
 
 nav li:not(:nth-last-child(2)) a:hover{
     color: var(--main-color);
+
 }
 
 nav li:nth-last-child(2) a:hover{
