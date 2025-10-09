@@ -126,10 +126,13 @@ const aboutMeObserver = new IntersectionObserver(
                 nav.style.transform = "";
                 nav.classList.add('slide-in-animation');
                 nav.style.position = "sticky";
+                nav.classList.add('hover-effect'); 
             } else if (entry.boundingClientRect.top > 0) {
                 nav.style.position = "static";
                 nav.classList.remove('slide-in-animation');
                 nav.style.transform = "none";
+                nav.classList.remove('hover-effect');
+
             }
         });
     },

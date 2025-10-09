@@ -323,12 +323,20 @@ nav{
     gap: 50px;
     width: 100%;
     margin: 0;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     padding: 0 2rem;
     z-index: 3;
+    transition:  background-color 1s ease, box-shadow 1s ease;
+
 }
 
+.hover-effect:hover{
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 1px 15px rgba(0,0,0,0.4);
+    transition: background-color 1s ease, box-shadow 1s ease;
+
+}
 
 
 nav li:nth-last-child(2) a{
