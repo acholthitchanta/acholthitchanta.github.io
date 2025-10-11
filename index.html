@@ -52,8 +52,8 @@
 
         <section class="intro container">
             <h1>Hi, I'm Arissa </h1>
-            <div class="animated-text">
-            <h2>I'm a <span></span></h2>
+            <div>
+            <h2>I'm a <span class="auto-type"></span></h2>
             </div>
             <p>Welcome to my portfolio! I’m a high school senior  passionate about computer science. This website is a project that I have built from scratch. Enjoy your visit!</p>
             <img id="code" src="images/code.svg">
@@ -199,6 +199,18 @@
         </section>
         
     <script src="script.js"></script>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+      <script>
+        var typed = new Typed('.auto-type', {
+        strings: ['software developer', 'graphic designer', 'problem solver', 'lifelong learner', 'creator'],
+        typeSpeed: 90,
+        backSpeed: 50,
+        loop: true
+        });
+    </script>
+
 
     </body>
 
