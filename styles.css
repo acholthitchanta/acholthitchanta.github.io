@@ -164,7 +164,7 @@ section{
   width: 100%;
 }
 
-.intro, #about-me > *, #skills > *, #contact > *{
+#about-me > *, #skills > *, #contact > *{
   opacity: 0;
 }
 
@@ -450,6 +450,7 @@ body.sidebar-open {
 }
 
 #code{
+    opacity: 0;
     filter: invert(43%) sepia(33%) saturate(221%) hue-rotate(154deg) brightness(93%) contrast(90%);
     position: absolute;
     max-width: 400px;
@@ -524,6 +525,7 @@ body.sidebar-open {
 
 
 .intro h1{
+    opacity: 0;
     margin: 0;
     font-size: max(4rem, 8vw);
     font-weight: bolder;
@@ -554,6 +556,7 @@ h2{
 }
 
 .intro h2, .intro h2 > span{
+    opacity: 0;
     font-size: max(1.3rem, 4vw) !important;
     font-family: "Lato", sans-serif;
     margin: auto;
@@ -566,6 +569,7 @@ h2{
 }
 
 .intro p{
+    opacity: 0;
     font-size: max(1.2rem, 2vw);
     position: relative;
 }

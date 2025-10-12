@@ -51,28 +51,43 @@ window.addEventListener('load', () => {
     const loadingScreen = document.querySelector('#loading-screen');
     const contentContainer = document.querySelector('body > :not(#loading-screen)');
     if (loadingScreen && contentContainer) {
+        // Add transition for smooth fade-out
+        loadingScreen.style.transition = 'opacity 0.5s ease-out';
         loadingScreen.style.opacity = '0';
         setTimeout(() => {
             loadingScreen.style.display = 'none';
             contentContainer.style.display = 'block';
             document.body.style.overflowY = 'auto';
+
             const intro = document.querySelector('.intro');
             if (intro) {
-                intro.classList.add('intro-slide-in');
+                var typed = new Typed('.auto-type', {
+                strings: ['software developer', 'graphic designer', 'problem solver', 'lifelong learner', 'creator'],
+                typeSpeed: 90,
+                backSpeed: 50,
+                loop: true
+                });
+                const introElements = document.querySelectorAll('.intro h1, .intro h2, .intro h2 > span, .intro p');
+                console.log(introElements)
+                introElements.forEach((element, i) => {
+                    setTimeout(() => {
+                        displayScrollElement(element, "shift-left");
+                        element.style.opacity= '1';
+                    }, i * 50);
+                });
+
+                const code = document.querySelector('#code')
+                displayScrollElement(code, 'shift-up')
+                code.style.opacity = '1'
+
             }
 
-            const animatedText = document.querySelector('.animated-text span');
-            if (animatedText) {
-                animatedText.classList.add('typing-start');
-            }
-        }, 500);
+        }, 500); 
     }
-
-
 });
 
 const scrollElements = document.querySelectorAll(
-    ' #about-me > *, #main-pic, #skills h2, #skills > *, #gallery h2, #contact > *:not(#social-media), #social-media'
+    '#about-me > *, #main-pic, #skills h2, #skills > *, #gallery h2, #contact > *:not(#social-media), #social-media'
 );
 
 const elementInView= (el, scrollOffset = 20) =>{
@@ -86,6 +101,7 @@ const elementInView= (el, scrollOffset = 20) =>{
 const displayScrollElement = (element, animation) => {
     element.classList.add(animation);
 };
+
 
 const handleScrollAnimation = () => {
     scrollElements.forEach((el) => {
