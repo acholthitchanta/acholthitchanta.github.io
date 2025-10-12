@@ -534,7 +534,10 @@ body.sidebar-open {
     max-width: 900px;
 }
 
+
+
 .bio li, .bio li a{
+    opacity: 0;
     font-size: max(1.1rem, 1.8vw);
 
 }
@@ -592,6 +595,7 @@ content{
 }
 
 #main-pic{
+    opacity: 0;
     width: 400px;
     position: relative;
     z-index: 2;
@@ -630,6 +634,7 @@ content{
 
 .info h2,
 .info h3 {
+    opacity: 0;
     align-self: flex-start;
     margin-right: 2rem;
     margin-top: 20px;

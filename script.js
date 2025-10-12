@@ -90,10 +90,20 @@ const displayScrollElement = (element, animation) => {
 const handleScrollAnimation = () => {
     scrollElements.forEach((el) => {
         if (elementInView(el,20)){
-            if (el.matches('#about-me > *') || el.matches('#gallery') ) displayScrollElement(el, "shift-right");
+            if (el.matches('#about-me > *') || el.matches('#gallery') ){
+                const pic = document.querySelector('#main-pic')
+                displayScrollElement(pic, 'shift-right')
+                const logoSlider = document.querySelectorAll('.info h2, .bio li, .bio li a');
+                logoSlider.forEach((logo, i) => {
+                    setTimeout(() => {
+                        displayScrollElement(logo, "shift-left");
+                        logo.style.opacity = '1';
+                    }, i * 100); // 
+                });
+            }
+
             else if (el.matches('#skills h2')) displayScrollElement(el, "shift-down");
             else if (el.matches('#skills > *')) {
-
                 // Animate each logo one by one
                 const logoSlider = document.querySelectorAll('.logo');
                 logoSlider.forEach((logo, i) => {
