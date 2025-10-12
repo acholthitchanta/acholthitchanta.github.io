@@ -604,7 +604,7 @@ content{
 
 #main-pic{
     opacity: 0;
-    width: 40%;
+    width: 30%;
     object-fit: cover;
     position: relative;
     z-index: 2;
@@ -619,8 +619,8 @@ content{
 
 
 .info{
-    width: 45vw;
-    height: 100%;
+    width: 55vw;
+    height: 50%;
     padding: 0 20px;
 }
 
