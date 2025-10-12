@@ -85,10 +85,6 @@ window.addEventListener('load', () => {
     }
 });
 
-const scrollElements = document.querySelectorAll(
-    '#about-me > *, #main-pic, #skills h2, #skills > *, #gallery h2, #contact > *:not(#social-media), #social-media'
-);
-
 const elementInView= (el, scrollOffset = 20) =>{
     const elementTop = el.getBoundingClientRect().top;
 
@@ -101,39 +97,92 @@ const displayScrollElement = (element, animation) => {
     element.classList.add(animation);
 };
 
+const removeScrollElement = (element, animation) =>{
+    element.classList.remove(animation);
 
-const handleScrollAnimation = () => {
-    scrollElements.forEach((el) => {
-        if (elementInView(el,20)){
-            if (el.matches('#about-me > *') || el.matches('#gallery') ){
-                const pic = document.querySelector('#main-pic')
-                displayScrollElement(pic, 'shift-right')
-                const logoSlider = document.querySelectorAll('.info h2, .bio li, .bio li a');
-                logoSlider.forEach((logo, i) => {
-                    setTimeout(() => {
-                        displayScrollElement(logo, "shift-left");
-                        logo.style.opacity = '1';
-                    }, i * 100); // 
-                });
-            }
 
-            else if (el.matches('#skills h2')) displayScrollElement(el, "shift-down");
-            else if (el.matches('#skills > *')) {
-                // Animate each logo one by one
-                const logoSlider = document.querySelectorAll('.logo');
-                logoSlider.forEach((logo, i) => {
-                    setTimeout(() => {
-                        displayScrollElement(logo, "shift-up");
-                        logo.style.opacity = '1';
-                    }, i * 150); // 300ms delay between each
-                });
-            }
-            else if (el.matches('#contact > *')) displayScrollElement(el, "shift-up");
-            else if (el.matches('#social-media')) displayScrollElement(logo, "shift-up");
-            el.style.opacity = '1';
-        }
+}
+
+function oneByOne(elements, action, delay){
+    const logoSlider = document.querySelectorAll(elements);
+    logoSlider.forEach((logo, i) => {
+        setTimeout(() => {
+            displayScrollElement(logo, action);
+            logo.style.opacity = '1';
+        }, i * delay); 
     })
 }
+
+function oneByOneRemove(elements, action, delay){
+    const logoSlider = document.querySelectorAll(elements);
+    logoSlider.forEach((logo, i) => {
+        setTimeout(() => {
+            logo.classList.remove(action)
+            logo.style.opacity = '0';
+        }, i * delay); 
+    })
+}
+
+
+const observerOptions = {
+  threshold: 0,
+};
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    const el = entry.target;
+    const isVisible = entry.isIntersecting;
+
+    if (isVisible) {
+      // === ENTER VIEWPORT ===
+      el.classList.remove('fade-out');
+      if (el.matches('#about-me > * ')) {
+        displayScrollElement(document.querySelector('#main-pic'), 'shift-right');
+        oneByOne('.info h2, .bio p', 'shift-left', 100);
+      } 
+      else if (el.matches('#skills h2')) {
+        displayScrollElement(el, "shift-down");
+      } 
+      else if (el.matches('#skills > *')){
+        oneByOne('.logo', 'shift-up', 100);
+    }
+      else if (el.matches('#contact > *:not(social-media')) {
+        displayScrollElement(el,'shift-up');
+      }
+      else if (el.matches('#social-media')){
+        oneByOne('#social-media', 'shift-up',50);
+      }
+      el.style.opacity = 1;
+    } else {
+      // === LEAVE VIEWPORT ===
+        el.classList.add('fade-out')
+        el.style.opacity = '0'
+      if (el.matches('#about-me > * ')) {
+        removeScrollElement(document.querySelector('#main-pic'), 'shift-right');
+        oneByOneRemove('.info h2, .bio p, .bio li a', 'shift-left', 100);
+      } 
+      else if (el.matches('#skills h2')) {
+        removeScrollElement(el, "shift-down");
+      } 
+      else if (el.matches('#skills > *')){
+        oneByOneRemove('.logo', 'shift-up', 100)
+    }
+      else if (el.matches('#contact > *:not(social-media')) {
+        removeScrollElement(el,'shift-up')
+      }
+      else if (el.matches('#social-media')){
+        oneByOneRemove('#social-media', 'shift-up', 50)
+      }
+      el.classList.remove('shift-up', 'shift-down', 'shift-left', 'shift-right');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('#about-me > *, #skills h2, #skills > *, #gallery h2, #contact > *:not(#social-media), #social-media').forEach((section) => {
+  sectionObserver.observe(section);
+});
+
+
 
 window.addEventListener('scroll', () => {
     handleScrollAnimation();

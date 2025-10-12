@@ -1,10 +1,5 @@
 
 @media (max-width: 800px) {
-
-    h2:not(.intro h2), p:not(.intro p):not(#contact p){
-    text-align: center;
-    }
-
   .menu-button{
     display: flex !important;
     }
@@ -34,8 +29,9 @@
     margin: auto;
     overflow-wrap: break-word;
   }
-
-
+  .info{
+    width: 90% !important;
+  }
 
   .posters img{
     gap: 1rem;
@@ -139,7 +135,7 @@
     font-family: "Poppins", sans-serif;
     --main-color: #5f737c;
     --main-lighter: #d3dcdf;
-    --main-darker: #2b4357;
+    --main-darker: #23292f;
     box-sizing: border-box
 
 }
@@ -214,9 +210,6 @@ section{
     margin: -70px 0; 
 }
 
-.background{
-    z-index: 1;
-}
 
 @font-face{
     font-family: "IBM Plex Serif";
@@ -241,6 +234,24 @@ section{
     animation: slide-in 1s ease;
 }
 
+.fade-in{
+    animation: fade 0.5s ease;
+}
+
+.fade-out{
+    animation: fade 0.5s ease;
+    animation-direction: reverse;
+}
+
+@keyframes fade{
+    from{
+        opacity: 1;
+    }
+
+    to{
+        opacity: 0;
+    }
+}
 
 @keyframes slide-in{
     from{
@@ -279,7 +290,7 @@ section{
 @keyframes shift-up{
     from{
         opacity: 0;
-        transform: translateY(30%);
+        transform: translateY(-50px);
     }
     to{
         opacity: 1;
@@ -290,7 +301,7 @@ section{
 @keyframes shift-down{
     from{
         opacity: 0;
-        transform: translateY(-30%);
+        transform: translateY(-50px);
     }
     to{
         opacity: 1;
@@ -320,7 +331,7 @@ nav{
     top: 0;
     align-items: center;
     justify-content: space-between;
-    gap: 50px;
+    gap: 40px;
     width: 100%;
     margin: 0;
     background-color: rgba(255, 255, 255, 0.7);
@@ -491,7 +502,7 @@ body.sidebar-open {
     position: relative;
     justify-content: center;
     margin: auto;
-    gap: 5rem;
+    gap: 50px;
     display: flex;
     z-index: 2;
     background-color: var(--main-color);
@@ -532,21 +543,14 @@ body.sidebar-open {
     font-family: "Lato", sans-serif;
 }
 
-.bio{
-    max-width: 900px;
-}
 
 
-
-.bio li, .bio li a{
+.bio p{
     opacity: 0;
-    font-size: max(1.1rem, 1.8vw);
+    font-size: max(1rem, 1.5vw);
 
 }
 
-.bio li a{
-    color: white;
-}
 
 
 h2{
@@ -600,23 +604,26 @@ content{
 
 #main-pic{
     opacity: 0;
-    width: 400px;
+    width: 40%;
+    object-fit: cover;
     position: relative;
     z-index: 2;
-    border-radius: 3%;
+    border: solid 2px white;
 }
 
 
 .bio{
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-top: 10px;
 }
 
 
 .info{
+    width: 45vw;
     height: 100%;
-    padding: 0;
+    padding: 0 20px;
 }
+
 
 .icons{
     display: flex;
@@ -640,8 +647,6 @@ content{
 .info h3 {
     opacity: 0;
     align-self: flex-start;
-    margin-right: 2rem;
-    margin-top: 20px;
 }
 
 h2{
@@ -656,9 +661,6 @@ h2{
     font-family: "IBM Plex Serif", serif;
 }
 
-.info p{
-    margin-left: 3rem;
-}
 
 #skills{
     height: auto;
