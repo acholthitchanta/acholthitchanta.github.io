@@ -62,7 +62,7 @@ window.addEventListener('load', () => {
             const intro = document.querySelector('.intro');
             if (intro) {
                 var typed = new Typed('.auto-type', {
-                strings: ['software developer', 'graphic designer', 'problem solver', 'lifelong learner', 'creator'],
+                strings: ['software developer', 'graphic designer', 'problem solver', 'creator', 'lifelong learner'],
                 typeSpeed: 90,
                 backSpeed: 50,
                 loop: true
