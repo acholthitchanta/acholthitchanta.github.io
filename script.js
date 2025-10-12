@@ -68,7 +68,6 @@ window.addEventListener('load', () => {
                 loop: true
                 });
                 const introElements = document.querySelectorAll('.intro h1, .intro h2, .intro h2 > span, .intro p');
-                console.log(introElements)
                 introElements.forEach((element, i) => {
                     setTimeout(() => {
                         displayScrollElement(element, "shift-left");
