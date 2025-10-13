@@ -4,6 +4,9 @@
     display: flex !important;
     }
 
+    h2{
+        text-align: center;
+    }
 
   .hideOnMobile{
     display: none;
@@ -554,7 +557,7 @@ body.sidebar-open {
 
 
 h2{
-    font-size: max(2.5rem, 4vw) !important;
+    font-size: max(2rem, 4vw) !important;
     font-family: "Lato", sans-serif;
     margin: auto;
 }
@@ -621,7 +624,7 @@ content{
 .info{
     width: 55vw;
     height: 50%;
-    padding: 0 20px;
+    padding: 0 15px;
 }
 
 
@@ -649,10 +652,6 @@ content{
     align-self: flex-start;
 }
 
-h2{
-    font-size: 3.2rem;
-    margin: 0;
-}
 
 .info h3{
     font-size: 2.2rem;
@@ -748,10 +747,7 @@ h2{
     width: 100%;
 }
 
-#contact h2{
-    font-size: max(2rem, 3vw);
 
-}
 
 #name, #email{
     width: 90%;
