@@ -4,7 +4,7 @@
     display: flex !important;
     }
 
-    h2{
+    h2:not(.intro h2){
         text-align: center;
     }
 
