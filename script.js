@@ -138,7 +138,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
       el.classList.remove('fade-out');
       if (el.matches('#about-me > * ')) {
         displayScrollElement(document.querySelector('#main-pic'), 'shift-right');
-        oneByOne('.info h2, .bio p', 'shift-left', 100);
+        oneByOne('.info', 'shift-left', 100);
       } 
       else if (el.matches('#skills h2')) {
         displayScrollElement(el, "shift-down");
@@ -149,8 +149,8 @@ const sectionObserver = new IntersectionObserver((entries) => {
       else if (el.matches('#contact > *:not(social-media')) {
         displayScrollElement(el,'shift-up');
       }
-      else if (el.matches('#social-media')){
-        oneByOne('#social-media', 'shift-up',50);
+      else if (el.matches('#social-observer')){
+        oneByOne('.social', 'shift-up',50);
       }
       el.style.opacity = 1;
     } else {
@@ -159,7 +159,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
         el.style.opacity = '0'
       if (el.matches('#about-me > * ')) {
         removeScrollElement(document.querySelector('#main-pic'), 'shift-right');
-        oneByOneRemove('.info h2, .bio p, .bio li a', 'shift-left', 100);
+        oneByOneRemove('.info', 'shift-left', 100);
       } 
       else if (el.matches('#skills h2')) {
         removeScrollElement(el, "shift-down");
@@ -170,15 +170,15 @@ const sectionObserver = new IntersectionObserver((entries) => {
       else if (el.matches('#contact > *:not(social-media')) {
         removeScrollElement(el,'shift-up')
       }
-      else if (el.matches('#social-media')){
-        oneByOneRemove('#social-media', 'shift-up', 50)
+      else if (el.matches('#social-observer')){
+        oneByOneRemove('.social', 'shift-up', 50)
       }
       el.classList.remove('shift-up', 'shift-down', 'shift-left', 'shift-right');
     }
   });
 }, observerOptions);
 
-document.querySelectorAll('#about-me > *, #skills h2, #skills > *, #gallery h2, #contact > *:not(#social-media), #social-media').forEach((section) => {
+document.querySelectorAll('#about-me > *, #skills h2, #skills > *, #gallery h2, #contact > *:not(#social-media), #social-observer').forEach((section) => {
   sectionObserver.observe(section);
 });
 

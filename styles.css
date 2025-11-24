@@ -304,7 +304,7 @@ section{
 @keyframes shift-down{
     from{
         opacity: 0;
-        transform: translateY(-50px);
+        transform: translateY(50px);
     }
     to{
         opacity: 1;
@@ -549,7 +549,6 @@ body.sidebar-open {
 
 
 .bio p{
-    opacity: 0;
     font-size: max(1rem, 1.5vw);
 
 }
@@ -622,6 +621,7 @@ content{
 
 
 .info{
+    opacity: 0;
     width: 55vw;
     height: 50%;
     padding: 0 15px;
@@ -648,7 +648,6 @@ content{
 
 .info h2,
 .info h3 {
-    opacity: 0;
     align-self: flex-start;
 }
 
@@ -742,7 +741,7 @@ content{
 
 
 #contact{
-    padding: max(1rem, 5vw);
+    padding: 0 max(1rem, 5vw);
     gap: 10rem;
     width: 100%;
 }
@@ -837,19 +836,26 @@ label{
     background-position: center;
 }
 
+
+.social{
+    opacity: 0;
+}
+
 #social-media{
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
     width: 100%;
-    padding-top: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
     gap: max(1rem, 2vw);
 
 }
 
 #social-media img{
-    height: max(25px, 3vw);
+    height: max(20px, 3vw);
+    width: auto;
 
 }
 
